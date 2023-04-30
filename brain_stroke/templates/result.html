@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brain Stroke Prediction Result</title>
+	<script src="https://kit.fontawesome.com/32d46300b7.js" crossorigin="anonymous"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images\favicon.ico' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<style>
+
+		/*# sourceMappingURL=style.css.map */
+		#video-background {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					z-index: -1;
+				  }
+				  
+				  #video-content {
+					position: relative;
+					z-index: 1;
+					/* Additional styles for your website content */
+				  }
+		
+				</style>
+				  
+</head>
+<body>
+	<video id="video-background" autoplay loop muted>
+		<source src="{% static 'images\bg.mp4' %}" type="video/mp4">
+		<!-- Add more source elements for different video formats if needed -->
+	  </video>
+	  <div id="video-content">
+		<div class="wrapper">
+			<div class="inner">
+				<style>
+					body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+
+
+}
+ h2{
+  text-align: center;
+  font-size:xx-large;
+
+
+}
+p{
+  text-align: center;
+  font-size:x-large;
+
+
+}
+
+.stroke {
+  color: rgb(224, 33, 33);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00ff99, 0 0 70px #00ff99, 0 0 80px #00ff99, 0 0 100px #00ff99, 0 0 150px #00ff99;
+}
+
+.no-stroke {
+  color: rgb(84, 215, 84);
+}
+
+.Error {
+  color: orange;
+}
+
+    
+  
+
+					
+	</style>
+	<!-- <div class="container"> -->
+		
+		{% csrf_token %}
+		<h1>Brain Stroke Prediction Result</h1>
+		<br>
+		<p>The result of your prediction is:</p>
+		{% if result == 'yes' %}
+			<!-- <h2 class="stroke">Stroke Detected </h2>
+			<div>
+				<i class="fa-solid fa-user-doctor fa-beat fa-2xl" style="color: #dbeb00;"></i>
+			</div>
+			<p>Please seek medical attention immediately.</p> -->
+			<div style="display: flex; align-items: center; justify-content: center;">
+				<h2 class="stroke" style="text-align: center;">Stroke Detected</h2>
+				<div style="margin-left: 10px;">
+				  <i class="fa-solid fa-user-doctor fa-beat fa-2x" style="color: #dbeb00;"></i>
+				</div>
+			  </div>
+			  <p style="text-align: center;">Please seek medical attention immediately.</p>
+			  
+			
+		
+		{% elif result == "no" %}
+			<div style="display: flex; align-items: center; justify-content: center;">
+				<h2 class="no-stroke" style="text-align: center;">No Stroke Detected</h2>
+				<div style="margin-left: 10px;">
+					<i class="fa-solid fa-shield-heart fa-flip fa-2xl" style="color: #2bff00;"></i>
+				</div>
+			  </div>
+			  <p style="text-align: center;">Keep monitoring your health and take necessary precautions.</p>
+		{% else %}
+			<h2 class="Error">Error</h2>
+			<p>Something went wrong. Please try again.</p>
+		{% endif %}
+	</div>
+	<!-- <style>
+		.predict-button {
+		  background-color: #d0e81b;
+		  color: rgb(0, 0, 0);
+		  border-radius: 5px;
+		  padding: 10px 20px;
+		  font-size: 16px;
+		  position: relative;
+		  overflow: hidden;
+		  transition: all 0.5s;
+		}
+		
+		.predict-button:before {
+		  content: "";
+		  display: block;
+		  position: absolute;
+		  background: rgba(255, 255, 255, 0.5);
+		  width: 100%;
+		  height: 100%;
+		  top: 0;
+		  left: 0;
+		  opacity: 0;
+		  transform: scale(2);
+		  transition: all 0.5s;
+		}
+		
+		.predict-button:hover:before {
+		  opacity: 1;
+		  transform: scale(1);
+		}
+		</style>
+		
+		<form action="{'home'}" method="post">
+			<button class="predict-button" type="submit">Predict Another</button>
+		</form> -->
+	
+</div>
+</div>
+</form>
+</body>
+</html>

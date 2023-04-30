@@ -1,0 +1,148 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://kit.fontawesome.com/32d46300b7.js" crossorigin="anonymous"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images\favicon.ico' %}">
+		<meta charset="utf-8">
+		<title>Brain Stroke Prediction</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		
+		<!-- STYLE CSS -->
+		<style>
+
+/*# sourceMappingURL=style.css.map */
+#video-background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: -1;
+		  }
+		  
+		  #video-content {
+			position: relative;
+			z-index: 1;
+			/* Additional styles for your website content */
+		  }
+
+		</style>
+		  
+		<link rel="stylesheet" href="{% static 'css\style.css' %}">
+
+	</head>
+
+	<body>
+		<video id="video-background" autoplay loop muted>
+			<source src="{% static 'images\bg1.mp4' %}" type="video/mp4">
+			<!-- Add more source elements for different video formats if needed -->
+		  </video>
+		  <div id="video-content">
+			<!-- Your website content goes here -->
+	
+		<div class="wrapper">
+			<div class="inner">
+				<form action="result/" method="POST">
+					{% csrf_token %}
+					
+
+					<h3>Brain Stroke Predictor</h3>
+					<p>Using Machine Learning Model for Brain stroke prediction</p>
+					<label class="form-group">
+						<input type="text" class="form-control"  required name="gender">
+						<span>gender(Male = 1 or Female=0)</span>
+						<span class="border"></span>
+					</label>  
+					<label class="form-group">
+						<input type="text" class="form-control"  required name="age">
+						<span for="">age</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group">
+						<input type="text" class="form-control"  required name="hypertension">
+						<span for="">hypertension(Yes=1 or No=0) </span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group">
+						<input type="text" class="form-control"  required name="heart_disease">
+						<span for="">heart_disease(Yes=1 or No=0)</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group">
+						<input type="text" class="form-control"  required name="ever_married">
+						<span for="">ever_married(Yes=1 or No=0)</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<input type="text" class="form-control"  required name="work_type">
+						<span for="">work_type(Gov.job=0 ,Private =1,self=2,children=3)</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<input type="text" class="form-control"  required name="Residence_type">
+						<span for="">Residence_type(Urban=1 or Rural=0)</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<input type="text" class="form-control"  required name="avg_glucose_level">
+						<span for="">avg_glucose_level</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<input type="text" class="form-control"  required name="bmi">
+						<span for="">bmi</span>
+						<span class="border"></span>
+					</label>
+					<label class="form-group" >
+						<input type="text" class="form-control"  required name="smoking_status">
+						<span for="">smoking_status(Formerly smoking=1,never smoking=2,smokes=3)</span>
+						<span class="border"></span>
+					</label>
+					<!-- <input class="btn btn-primary btn-lg btn-block" type="submit" value='Predict'> -->
+					<style>
+						.predict-button {
+						  background-color:#008080;
+						  color: white;
+						  border-radius: 5px;
+						  padding: 10px 20px;
+						  font-size: 16px;
+						  position: relative;
+						  overflow: hidden;
+						  transition: all 0.5s;
+						}
+						
+						.predict-button:before {
+						  content: "";
+						  display: block;
+						  position: absolute;
+						  background: rgba(255, 255, 255, 0.5);
+						  width: 100%;
+						  height: 100%;
+						  top: 0;
+						  left: 0;
+						  opacity: 0;
+						  transform: scale(2);
+						  transition: all 0.5s;
+						}
+						
+						.predict-button:hover:before {
+						  opacity: 1;
+						  transform: scale(1);
+						}
+						</style>
+						
+						<button class="predict-button" type="submit">Predict</button>
+						
+				</form>
+			</div>
+		</div>
+	</div>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
